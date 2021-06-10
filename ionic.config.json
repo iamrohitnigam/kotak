@@ -1,5 +1,7 @@
 {
   "name": "kotak",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

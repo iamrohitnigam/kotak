@@ -68,9 +68,6 @@
       </ion-card>
     </div>
     <div *ngIf="loading == 'done' && products.length == 0">
-      <div class="center">
-        <img src="../../assets/ofs.png" width="80%" />
-      </div>
       <div class="center padding-top">
         <div class="gold-head padding-top">
           Temporarily Out of Stock
@@ -79,16 +76,6 @@
           Please visit after some time.
         </div>
       </div>
-      <!-- <ion-card>
-      <ion-item>
-        <ion-icon name="close-circle-outline" slot="start"></ion-icon>
-        <ion-label>No content available</ion-label>
-      </ion-item>
-    
-      <ion-card-content>
-        Either we went out of stock for this model or no stock present.
-      </ion-card-content>
-    </ion-card> -->
     </div>
 
   </ion-content>
