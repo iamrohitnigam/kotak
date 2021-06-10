@@ -1,27 +1,27 @@
-#container {
-  text-align: center;
-
+.badge {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  right: -10px;
+  bottom: -25px;
+  max-width: 120%;
+}
+.gold{
+  color: rgb(150, 136, 0);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.brownbold{
+  font-size: 13px;
+}
+.mod{
+  color: black;
+  font-weight: bold;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+ion-select{
+  padding: 0px;
 }
-
-#container a {
-  text-decoration: none;
+.filIc{
+  font-size: 26px;
+  padding-right: 5px;
+  
+  float: left;
 }

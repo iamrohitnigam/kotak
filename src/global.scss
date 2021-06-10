@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,36 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.no-padding {
+    padding: 0px;
+}
+.no-padding-top {
+    padding-top: 0px;
+}
+
+.badge-one {
+    position: absolute;
+    top: 0px;
+    right: -5px;
+    font-size: 0.6em;
+    --padding-start: 5px;
+    --padding-end: 5px;
+}
+
+.badge-two {
+    position: absolute;
+    top: 0px;
+    right: -5px;
+    font-size: 0.6em;
+    --padding-start: 3px;
+    --padding-end: 3px;
+}
+
+.gold-head {
+    color: #8d6a39;
+    font-size: 24px;
+}
+.center {
+    text-align: center;
+}

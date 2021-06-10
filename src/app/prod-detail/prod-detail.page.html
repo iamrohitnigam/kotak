@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Product</ion-title>
+    <ion-buttons slot="end">
+
+      <ion-button class="badge-button" routerLink="/cart/" routerDirection="forward">
+        <ion-icon size="large" name="cart-outline">
+        </ion-icon>
+        <ion-badge class="badge-one" *ngIf="cartItems.length > 0" color="danger">{{ cartItems.length }}</ion-badge>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-content *ngIf="product">
+    <ion-card class="iframeElm">
+      <!-- <iframe width="100%" height="315" #iframe frameborder="0" allowfullscreen></iframe> -->
+    </ion-card>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col class="center">{{product.productName}}</ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="currentSeg">
+      <ion-segment-button value="1">
+        <ion-label>Basic</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>Specification</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-card *ngIf="currentSeg == 1">
+
+      <ion-item class="ion-activated">
+        <div class="low-lable">RAM</div>
+        <ion-label>{{product.ram}}</ion-label>
+      </ion-item>
+
+
+      <ion-item>
+        <div class="low-lable">Storage</div>
+        <ion-label>{{product.storage}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <div class="low-lable">Screen</div>
+        <ion-label>{{product.screen}}</ion-label>
+      </ion-item>
+
+    </ion-card>
+
+    <ion-card *ngIf="currentSeg == 2">
+      <ion-item>
+        <div class="low-lable">CPU</div>
+        <ion-label>{{product.cpu}}</ion-label>
+      </ion-item>
+
+    </ion-card>
+
+    <ion-card class="cont">
+      <h4>Details</h4>
+      <p>{{product.description}}</p>
+    </ion-card>
+    
+  </ion-content>
+</ion-content>
+<ion-footer no-shadow  *ngIf="product">
+  <ion-toolbar position="bottom" *ngIf="!cartItems.includes(product.id)">
+    <ion-button expand="full" (click)="add()" [disabled]="cartItems.includes(product.id)" style="--background:#0E2239">
+      Add to Cart</ion-button>
+  </ion-toolbar>
+  <ion-toolbar position="bottom" *ngIf="cartItems.includes(product.id)">
+    <ion-button expand="full" [disabled]="true" fill="outline" expand="block">Added to
+      Cart</ion-button>
+  </ion-toolbar>
+</ion-footer>

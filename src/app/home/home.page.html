@@ -1,20 +1,96 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Products</ion-title>
+    <ion-buttons slot="end">
+
+      <ion-button class="badge-button" routerLink="/cart/" routerDirection="forward">
+        <ion-icon size="large" name="cart-outline">
+        </ion-icon>
+        <ion-badge class="badge-one" *ngIf="cartItems.length > 0" color="danger">{{ cartItems.length }}</ion-badge>
+      </ion-button>
+
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-content>
+    <div *ngIf="products.length > 0">
+      <ion-grid class="no-padding">
+
+      </ion-grid>
+
+      <ion-card *ngFor="let product of products">
+        <ion-grid class="no-padding">
+          
+
+          <ion-row class="padding-top-10">
+            <ion-col class="left">
+              <ion-row>
+                <ion-col class="no-padding mod">
+                  <h4 style="margin-top:1px; color: #000000;">
+                    {{product.productName}}
+                  </h4>
+                  
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            
+
+          </ion-row>
+          <ion-row>
+            <ion-col class="no-padding-top">
+              <div class="smallblack">{{product.ram}} - {{product.storage}}</div>
+            </ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col class="right">
+                  <h6 class="no-padding mod">Rs. {{product.price}}</h6>
+              </ion-col>
+            </ion-row>
+          <ion-row>
+            <ion-col class="no-padding-top">
+              <ion-button expand="full" fill="outline" style="--background:#0E2239" (click)="openDetail(product)">
+                Details</ion-button>
+            </ion-col>
+            <ion-col class="no-padding-top">
+              <ion-button expand="full" (click)="add(product)" [disabled]="cartItems.includes(product.id)"
+                style="--background:#0E2239">
+                Add to Cart</ion-button>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>
+    <div *ngIf="loading == 'done' && products.length == 0">
+      <div class="center">
+        <img src="../../assets/ofs.png" width="80%" />
+      </div>
+      <div class="center padding-top">
+        <div class="gold-head padding-top">
+          Temporarily Out of Stock
+        </div>
+        <div>
+          Please visit after some time.
+        </div>
+      </div>
+      <!-- <ion-card>
+      <ion-item>
+        <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+        <ion-label>No content available</ion-label>
+      </ion-item>
+    
+      <ion-card-content>
+        Either we went out of stock for this model or no stock present.
+      </ion-card-content>
+    </ion-card> -->
+    </div>
+
+  </ion-content>
+
 </ion-content>

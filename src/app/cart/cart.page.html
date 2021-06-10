@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list *ngIf="!cartEmpty">
+    <ion-item-sliding *ngFor="let prod of prods">
+      <ion-item class="lista">
+        <ion-icon name="pricetag-outline"></ion-icon>
+        <ion-label style="margin-left: 10px;">
+          <h2 text-wrap>{{prod.productName}} </h2>
+          <p>{{prod.ram}} - {{prod.storage}} </p>
+        </ion-label>
+        <div item-end>
+          <div color="primary">
+            Rs. {{prod.price}}
+          </div>
+        </div>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="removeItem(prod)">Delete</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <div *ngIf="cartEmpty">
+    <div class="center padding-top">
+      <div class="gold-head padding-top">
+        Empty Cart </div>
+      <div>
+        Please add order now.
+      </div>
+    </div>
+
+    <ion-grid class="padding-top">
+      <ion-row>
+        <ion-col class="center padding-top">
+          <ion-button expand="block" size="large" style="--background:#0E2239" routerLink="/">ADD PRODUCTS
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+<ion-footer *ngIf="!cartEmpty">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div style="color: black;
+        margin: 10px 0 0 10px;">
+          <strong>Total: </strong>
+          <span>Rs. {{getFinalValue()}}</span>
+        </div>
+      </ion-col>
+      <ion-col>
+        <ion-button item-end expand="block" style="--background:#0E2239" color="secondary" (click)="sell()">
+          <ion-icon name="cart"></ion-icon>
+          &nbsp;BUY NOW
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
